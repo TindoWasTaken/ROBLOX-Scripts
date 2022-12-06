@@ -144,8 +144,11 @@ local toggle = sec11:Toggle('God Mode (Universal)', false, 'Toggle', function(t)
     end
     GMS = game:GetService('RunService').RenderStepped:Connect(God) -- same shit as before
     
+    if not Client.Character.PrimaryPart:FindFirstChild('VanishParticle') then 
+    	game.Players.LocalPlayer.Character:BreakJoints()
+    end
+    
     if not God2 then
-        game.Players.LocalPlayer.Character:BreakJoints() -- causes you to reset when you first load in the script. Probably because every "false" script fires in the lib when you execute. Not a scripting issue, but rather a UI lib issue.
         GMS:Disconnect()
         return
     end
